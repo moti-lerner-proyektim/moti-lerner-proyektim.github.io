@@ -37,16 +37,16 @@
 
   /* ===== הירו ===== */
   .hero{
-    position:relative;min-height:420px;display:flex;align-items:center;overflow:hidden;
+    position:relative;min-height:380px;display:flex;align-items:center;overflow:hidden;
   }
   .hero-bg{
     position:absolute;inset:0;
     background-image:url('images/hero-classroom.jpg');
-    background-size:cover;background-position:center;
+    background-size:cover;background-position:center 35%;
   }
   .hero-scrim{
     position:absolute;inset:0;
-    background:linear-gradient(90deg, rgba(11,15,20,.65) 0%, rgba(11,15,20,.88) 55%, rgba(11,15,20,.97) 100%);
+    background:linear-gradient(90deg, rgba(20,15,8,.08) 0%, rgba(20,15,8,.42) 58%, rgba(20,15,8,.6) 100%);
   }
   .hero-deco{position:absolute;inset:0;pointer-events:none;z-index:1;overflow:hidden;}
   .hero-deco .bar{position:absolute;background:var(--amber);border-radius:6px;opacity:.9;}
@@ -66,35 +66,19 @@
     box-shadow:0 0 0 3px rgba(51,214,192,.18);}
   .hero h1{
     font-family:'Frank Ruhl Libre',serif;font-weight:900;
-    font-size:clamp(34px,6vw,58px);line-height:1.2;margin:0 0 22px;
+    font-size:clamp(36px,6.6vw,64px);line-height:1.2;margin:0 0 26px;
+    text-shadow:0 3px 18px rgba(0,0,0,.55);
   }
-  .hero h1 .accent{color:var(--amber);}
+  .hero h1 .accent{color:#ffb020;}
 
-  .mission{margin:0 0 32px;display:flex;flex-direction:column;gap:6px;}
-  .mission span{display:block;}
-  .m1{font-family:'Frank Ruhl Libre',serif;font-weight:700;font-size:20px;color:var(--amber);}
-  .m2{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:14px;letter-spacing:.5px;color:var(--teal);}
-  .m3{font-family:'Heebo',sans-serif;font-weight:300;font-size:17px;color:var(--chalk);}
-  .m4{font-family:'Heebo',sans-serif;font-weight:600;font-size:14px;letter-spacing:1px;color:var(--muted);text-transform:uppercase;}
+  .mission{margin:0 0 10px;display:flex;flex-direction:column;gap:9px;}
+  .mission span{display:block;text-shadow:0 2px 14px rgba(0,0,0,.55);}
+  .m1{font-family:'Frank Ruhl Libre',serif;font-weight:700;font-size:30px;color:#ffb020;}
+  .m2{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:19px;letter-spacing:.5px;color:#33d6c0;}
+  .m3{font-family:'Heebo',sans-serif;font-weight:300;font-size:24px;color:#f8f5ee;}
+  .m4{font-family:'Heebo',sans-serif;font-weight:600;font-size:17px;letter-spacing:1px;color:#e4dcc8;text-transform:uppercase;}
 
   .hero p{font-size:15.5px;color:var(--muted);max-width:46ch;line-height:1.8;margin:0 0 30px;}
-
-  .search-box{
-    display:flex;align-items:center;gap:12px;background:var(--panel);
-    border:1.5px solid var(--panel-line);border-radius:12px;padding:6px 8px 6px 18px;
-    max-width:480px;
-  }
-  .search-box svg{width:18px;height:18px;color:var(--muted);flex-shrink:0;}
-  .search-box input{
-    flex:1;background:transparent;border:none;color:var(--chalk);font-family:'Heebo',sans-serif;
-    font-size:14.5px;padding:12px 6px;outline:none;
-  }
-  .search-box input::placeholder{color:var(--muted);}
-  .search-box button{
-    background:var(--amber);color:#241a06;border:none;font-family:'Rubik','Heebo',sans-serif;
-    font-weight:700;font-size:13px;padding:11px 20px;border-radius:8px;cursor:pointer;
-    white-space:nowrap;
-  }
 
   /* ===== גוף הדף ===== */
   .wrap{max-width:1500px;margin:0 auto;padding:52px 28px 80px;}
@@ -198,12 +182,6 @@
         <span class="m2">ודרכי הוראה</span>
         <span class="m3">המבוססים על חקר ולימוד עצמי</span>
         <span class="m4">באמצעות כלי בינה מלאכותית</span>
-      </div>
-
-      <div class="search-box">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input type="text" id="searchInput" placeholder="מה תרצו לחקור היום?" oninput="filterCards()">
-        <button onclick="document.getElementById('searchInput').focus()">חיפוש</button>
       </div>
     </div>
   </div>
