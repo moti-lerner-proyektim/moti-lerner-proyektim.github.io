@@ -1,9 +1,9 @@
 <!--
-  מעבדת הפרויקטים - דף שער ראשי (גרסה 2, בהשראת פורטלי למידה)
-  הצהרת AI: קובץ זה נבנה בסיוע Claude (Anthropic). מחבר בין שני הפרויקטים
-  הדיגיטליים: "פיזיקה יישומית בשילוב טכנולוגיה" ו"החשמלאי הראשי".
-  תמונות: Unsplash, רישיון Unsplash License (שימוש חופשי, כולל מסחרי, ללא צורך בקרדיט).
-  צילום הירו: Vitaly Gariev · צילום פיזיקה: Vitaly Gariev · צילום מעגל: Vishnu Mohanan.
+  לומדים בעצמי - דף שער ראשי
+  הצהרת AI: קובץ זה נבנה בסיוע Claude (Anthropic). מחבר בין הפרויקטים
+  הדיגיטליים של מוטי לרנר (פיזיקה יישומית, ועוד בהמשך).
+  תמונות: Unsplash ו-Pexels, רישיונות חופשיים לשימוש (כולל מסחרי, ללא צורך בקרדיט).
+  צילום הירו: Pexels (Mickael Ange Konan) · צילום פיזיקה: Vitaly Gariev (Unsplash).
 -->
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
@@ -15,13 +15,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;900&family=Heebo:wght@300;400;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0b0f14;
-    --panel:#121a24;
-    --panel-line:#24303f;
-    --amber:#ffb020;
-    --teal:#33d6c0;
-    --chalk:#eef1f6;
-    --muted:#8b93a1;
+    --bg:#ffffff;
+    --panel:#f5f6f8;
+    --panel-line:#e2e5eb;
+    --amber:#d98c0e;
+    --teal:#0e9488;
+    --chalk:#1b2027;
+    --muted:#5b6472;
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;background:var(--bg);color:var(--chalk);font-family:'Heebo',sans-serif;}
@@ -41,14 +41,14 @@
   }
   .hero-bg{
     position:absolute;inset:0;
-    background-image:url('https://images.unsplash.com/photo-1758270705518-b61b40527e76?fm=jpg&q=70&w=1800&auto=format&fit=crop');
+    background-image:url('https://images.pexels.com/photos/34526416/pexels-photo-34526416.jpeg?auto=compress&cs=tinysrgb&w=1800');
     background-size:cover;background-position:center;
   }
   .hero-scrim{
     position:absolute;inset:0;
     background:linear-gradient(90deg, rgba(11,15,20,.65) 0%, rgba(11,15,20,.88) 55%, rgba(11,15,20,.97) 100%);
   }
-  .hero-inner{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:48px 28px;width:100%;}
+  .hero-inner{position:relative;z-index:1;max-width:1500px;margin:0 auto;padding:48px 28px;width:100%;}
   .hero-eyebrow{
     font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:2px;color:var(--teal);
     text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:9px;
@@ -88,7 +88,7 @@
   }
 
   /* ===== גוף הדף ===== */
-  .wrap{max-width:1080px;margin:0 auto;padding:52px 28px 80px;}
+  .wrap{max-width:1500px;margin:0 auto;padding:52px 28px 80px;}
 
   .section-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:26px;gap:12px;flex-wrap:wrap;}
   .section-title{
@@ -98,7 +98,8 @@
   .section-title::before{content:"";width:4px;height:24px;background:var(--teal);border-radius:2px;}
   .result-count{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);}
 
-  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .cards{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;}
+  @media(max-width:1300px){ .cards{grid-template-columns:repeat(3,1fr);} }
   @media(max-width:900px){ .cards{grid-template-columns:1fr 1fr;} }
   @media(max-width:600px){ .cards{grid-template-columns:1fr;} }
 
@@ -119,7 +120,7 @@
   .card-tag{
     position:absolute;top:12px;right:12px;background:rgba(11,15,20,.82);
     border:1px solid rgba(255,255,255,.15);backdrop-filter:blur(4px);
-    font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--chalk);
+    font-family:'JetBrains Mono',monospace;font-size:11px;color:#f2f4f7;
     padding:5px 11px;border-radius:20px;
   }
 
@@ -147,10 +148,10 @@
   .card.soon:hover{transform:none;border-color:var(--panel-line);}
   .card.soon .card-media{
     aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;
-    background:repeating-linear-gradient(135deg, #16202c, #16202c 10px, #131b25 10px, #131b25 20px);
+    background:repeating-linear-gradient(135deg, #eef0f3, #eef0f3 10px, #e6e9ee 10px, #e6e9ee 20px);
   }
-  .card.soon .card-media svg{width:34px;height:34px;color:var(--panel-line);}
-  .card.soon .card-tag{background:rgba(11,15,20,.7);border-color:var(--panel-line);color:var(--muted);}
+  .card.soon .card-media svg{width:34px;height:34px;color:#c3c9d2;}
+  .card.soon .card-tag{background:rgba(11,15,20,.55);border-color:rgba(255,255,255,.12);color:#e4e7ec;}
   .card.soon .card-title{color:var(--muted);}
   .card.soon .card-footer{color:var(--panel-line);}
 
@@ -170,7 +171,6 @@
     <div class="hero-bg"></div>
     <div class="hero-scrim"></div>
     <div class="hero-inner">
-      <div class="hero-eyebrow">מעבדה דיגיטלית · כיתה ט׳</div>
       <h1>לומדים <span class="accent">בעצמי</span></h1>
 
       <div class="mission">
