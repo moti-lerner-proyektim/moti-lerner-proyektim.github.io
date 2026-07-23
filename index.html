@@ -67,7 +67,7 @@
   .hero h1{
     font-family:'Frank Ruhl Libre',serif;font-weight:900;
     font-size:clamp(36px,6.6vw,64px);line-height:1.2;margin:0 0 26px;
-    text-shadow:0 3px 18px rgba(0,0,0,.55);
+    color:#f8f5ee;text-shadow:0 3px 18px rgba(0,0,0,.6);
   }
   .hero h1 .accent{color:#ffb020;}
 
@@ -142,6 +142,8 @@
   .card.soon .card-media{
     aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;position:relative;
   }
+  .card.soon .card-media img{filter:grayscale(65%) brightness(.8);opacity:.85;}
+  .card.soon:hover .card-media img{opacity:.95;}
   .card.soon .card-media svg.icon{width:38px;height:38px;color:rgba(255,255,255,.92);position:relative;z-index:1;}
   .soon-1 .card-media{background:linear-gradient(135deg, #0e9488, #123a37);}
   .soon-2 .card-media{background:linear-gradient(135deg, #d98c0e, #6e4a12);}
@@ -198,7 +200,7 @@
       <a class="card" href="https://fizika-yesumit-tech-9.github.io/fizika-yesumit-tech-9/" target="_blank" rel="noopener"
          data-search="פיזיקה יישומית בשילוב טכנולוגיה מכניקה אנרגיה קפיצים אלסטיות בינה מלאכותית עבודת חקר חשמל החשמלאי הראשי">
         <div class="card-media">
-          <img src="https://images.unsplash.com/photo-1758685734312-5134968399a8?fm=jpg&q=70&w=900&auto=format&fit=crop" alt="נוסחאות פיזיקה על לוח">
+          <img src="images/fizika.jpeg" alt="נוסחאות פיזיקה על לוח">
           <div class="card-tag">אתר לימוד · כיתה ט׳</div>
         </div>
         <div class="card-body">
@@ -214,8 +216,7 @@
 
       <div class="card soon soon-1" data-search="תקשוב כיתה י">
         <div class="card-media">
-          <svg class="deco-lines" viewBox="0 0 200 112" preserveAspectRatio="none"><path d="M0 90 Q50 40 100 70 T200 30" stroke="#fff" stroke-width="2" fill="none"/><circle cx="30" cy="20" r="14" stroke="#fff" stroke-width="1.5" fill="none"/><circle cx="175" cy="90" r="20" stroke="#fff" stroke-width="1.5" fill="none"/></svg>
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg>
+          <img src="images/tiksuv-1.jpeg" alt="תקשוב כיתה י">
           <div class="card-tag">בקרוב</div>
         </div>
         <div class="card-body">
@@ -227,8 +228,7 @@
 
       <div class="card soon soon-2" data-search="תקשוב כיתה יא">
         <div class="card-media">
-          <svg class="deco-lines" viewBox="0 0 200 112" preserveAspectRatio="none"><path d="M20 100 L60 30 L100 80 L140 20 L180 90" stroke="#fff" stroke-width="2" fill="none" stroke-linejoin="round"/></svg>
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 2 4 14h6l-1 8 9-12h-6z" stroke-linejoin="round"/></svg>
+          <img src="images/tiksuv-2.jpeg" alt="תקשוב כיתה יא">
           <div class="card-tag">בקרוב</div>
         </div>
         <div class="card-body">
@@ -240,13 +240,7 @@
 
       <div class="card soon soon-3" data-search="תקשוב כיתה יב ניהול פרויקט">
         <div class="card-media">
-          <svg class="deco-lines" viewBox="0 0 200 112" preserveAspectRatio="none">
-            <rect x="15" y="25" width="34" height="24" rx="3" stroke="#fff" stroke-width="1.5" fill="none"/>
-            <rect x="60" y="55" width="34" height="24" rx="3" stroke="#fff" stroke-width="1.5" fill="none"/>
-            <rect x="150" y="20" width="34" height="24" rx="3" stroke="#fff" stroke-width="1.5" fill="none"/>
-            <path d="M49 37 L60 67 M94 67 L150 32" stroke="#fff" stroke-width="1.5"/>
-          </svg>
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          <img src="images/tiksuv-3.jpeg" alt="תקשוב כיתה יב, ניהול פרויקט">
           <div class="card-tag">בקרוב</div>
         </div>
         <div class="card-body">
@@ -258,8 +252,7 @@
 
       <div class="card soon soon-4" data-search="בגרויות ליבת תקשוב">
         <div class="card-media">
-          <svg class="deco-lines" viewBox="0 0 200 112" preserveAspectRatio="none"><circle cx="100" cy="56" r="40" stroke="#fff" stroke-width="1.5" fill="none"/><circle cx="100" cy="56" r="26" stroke="#fff" stroke-width="1.5" fill="none"/></svg>
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="9" r="6"/><path d="M9 14.5 7 22l5-3 5 3-2-7.5" stroke-linejoin="round"/></svg>
+          <img src="images/bgruyot.jpeg" alt="בגרויות ליבת תקשוב">
           <div class="card-tag">בקרוב</div>
         </div>
         <div class="card-body">
