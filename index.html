@@ -1,0 +1,292 @@
+<!--
+  מעבדת הפרויקטים - דף שער ראשי (גרסה 2, בהשראת פורטלי למידה)
+  הצהרת AI: קובץ זה נבנה בסיוע Claude (Anthropic). מחבר בין שני הפרויקטים
+  הדיגיטליים: "פיזיקה יישומית בשילוב טכנולוגיה" ו"החשמלאי הראשי".
+  תמונות: Unsplash, רישיון Unsplash License (שימוש חופשי, כולל מסחרי, ללא צורך בקרדיט).
+  צילום הירו: Vitaly Gariev · צילום פיזיקה: Vitaly Gariev · צילום מעגל: Vishnu Mohanan.
+-->
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>לומדים בעצמי — מוטי לרנר</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;900&family=Heebo:wght@300;400;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0f14;
+    --panel:#121a24;
+    --panel-line:#24303f;
+    --amber:#ffb020;
+    --teal:#33d6c0;
+    --chalk:#eef1f6;
+    --muted:#8b93a1;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--chalk);font-family:'Heebo',sans-serif;}
+
+  /* ===== סרגל עליון ===== */
+  .topbar{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 28px;border-bottom:1px solid var(--panel-line);
+  }
+  .brand{font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:1px;color:var(--muted);}
+  .brand b{color:var(--chalk);}
+  .brand .dot{color:var(--amber);}
+
+  /* ===== הירו ===== */
+  .hero{
+    position:relative;min-height:420px;display:flex;align-items:center;overflow:hidden;
+  }
+  .hero-bg{
+    position:absolute;inset:0;
+    background-image:url('https://images.unsplash.com/photo-1758270705518-b61b40527e76?fm=jpg&q=70&w=1800&auto=format&fit=crop');
+    background-size:cover;background-position:center;
+  }
+  .hero-scrim{
+    position:absolute;inset:0;
+    background:linear-gradient(90deg, rgba(11,15,20,.65) 0%, rgba(11,15,20,.88) 55%, rgba(11,15,20,.97) 100%);
+  }
+  .hero-inner{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:48px 28px;width:100%;}
+  .hero-eyebrow{
+    font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:2px;color:var(--teal);
+    text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:9px;
+  }
+  .hero-eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--teal);
+    box-shadow:0 0 0 3px rgba(51,214,192,.18);}
+  .hero h1{
+    font-family:'Frank Ruhl Libre',serif;font-weight:900;
+    font-size:clamp(34px,6vw,58px);line-height:1.2;margin:0 0 22px;
+  }
+  .hero h1 .accent{color:var(--amber);}
+
+  .mission{margin:0 0 32px;display:flex;flex-direction:column;gap:6px;}
+  .mission span{display:block;}
+  .m1{font-family:'Frank Ruhl Libre',serif;font-weight:700;font-size:20px;color:var(--amber);}
+  .m2{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:14px;letter-spacing:.5px;color:var(--teal);}
+  .m3{font-family:'Heebo',sans-serif;font-weight:300;font-size:17px;color:var(--chalk);}
+  .m4{font-family:'Heebo',sans-serif;font-weight:600;font-size:14px;letter-spacing:1px;color:var(--muted);text-transform:uppercase;}
+
+  .hero p{font-size:15.5px;color:var(--muted);max-width:46ch;line-height:1.8;margin:0 0 30px;}
+
+  .search-box{
+    display:flex;align-items:center;gap:12px;background:var(--panel);
+    border:1.5px solid var(--panel-line);border-radius:12px;padding:6px 8px 6px 18px;
+    max-width:480px;
+  }
+  .search-box svg{width:18px;height:18px;color:var(--muted);flex-shrink:0;}
+  .search-box input{
+    flex:1;background:transparent;border:none;color:var(--chalk);font-family:'Heebo',sans-serif;
+    font-size:14.5px;padding:12px 6px;outline:none;
+  }
+  .search-box input::placeholder{color:var(--muted);}
+  .search-box button{
+    background:var(--amber);color:#241a06;border:none;font-family:'Rubik','Heebo',sans-serif;
+    font-weight:700;font-size:13px;padding:11px 20px;border-radius:8px;cursor:pointer;
+    white-space:nowrap;
+  }
+
+  /* ===== גוף הדף ===== */
+  .wrap{max-width:1080px;margin:0 auto;padding:52px 28px 80px;}
+
+  .section-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:26px;gap:12px;flex-wrap:wrap;}
+  .section-title{
+    font-family:'Frank Ruhl Libre',serif;font-weight:700;font-size:24px;
+    display:flex;align-items:center;gap:12px;
+  }
+  .section-title::before{content:"";width:4px;height:24px;background:var(--teal);border-radius:2px;}
+  .result-count{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);}
+
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  @media(max-width:900px){ .cards{grid-template-columns:1fr 1fr;} }
+  @media(max-width:600px){ .cards{grid-template-columns:1fr;} }
+
+  .card{
+    background:var(--panel);border:1px solid var(--panel-line);border-radius:14px;overflow:hidden;
+    text-decoration:none;color:var(--chalk);transition:transform .18s, border-color .18s;
+    display:flex;flex-direction:column;
+  }
+  .card:hover{transform:translateY(-4px);}
+  .card:nth-child(1):hover{border-color:var(--teal);}
+  .card:nth-child(2):hover{border-color:var(--amber);}
+  .card:focus-visible{outline:2px solid var(--teal);outline-offset:2px;}
+  .card.is-hidden{display:none;}
+
+  .card-media{position:relative;aspect-ratio:16/9;overflow:hidden;background:#000;}
+  .card-media img{width:100%;height:100%;object-fit:cover;display:block;opacity:.85;transition:opacity .18s, transform .3s;}
+  .card:hover .card-media img{opacity:1;transform:scale(1.03);}
+  .card-tag{
+    position:absolute;top:12px;right:12px;background:rgba(11,15,20,.82);
+    border:1px solid rgba(255,255,255,.15);backdrop-filter:blur(4px);
+    font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--chalk);
+    padding:5px 11px;border-radius:20px;
+  }
+
+  .card-body{padding:20px 22px 22px;display:flex;flex-direction:column;gap:10px;flex:1;}
+  .card-title{font-family:'Frank Ruhl Libre',serif;font-weight:700;font-size:19px;line-height:1.4;}
+  .card-desc{font-size:13.5px;line-height:1.75;color:var(--muted);flex:1;}
+  .card-provider{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--muted);}
+
+  .card-footer{
+    display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding-top:12px;
+    border-top:1px solid var(--panel-line);font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--muted);
+  }
+  .card-footer span{display:flex;align-items:center;gap:5px;}
+  .card-footer svg{width:14px;height:14px;}
+  .card:nth-child(1) .card-footer svg{color:var(--teal);}
+  .card:nth-child(2) .card-footer svg{color:var(--amber);}
+
+  .no-results{display:none;color:var(--muted);font-size:14px;padding:30px 0;text-align:center;}
+  .no-results.show{display:block;}
+
+  /* ===== כרטיסי "בקרוב" ===== */
+  .card.soon{
+    border:1.5px dashed var(--panel-line);cursor:default;opacity:.72;
+  }
+  .card.soon:hover{transform:none;border-color:var(--panel-line);}
+  .card.soon .card-media{
+    aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;
+    background:repeating-linear-gradient(135deg, #16202c, #16202c 10px, #131b25 10px, #131b25 20px);
+  }
+  .card.soon .card-media svg{width:34px;height:34px;color:var(--panel-line);}
+  .card.soon .card-tag{background:rgba(11,15,20,.7);border-color:var(--panel-line);color:var(--muted);}
+  .card.soon .card-title{color:var(--muted);}
+  .card.soon .card-footer{color:var(--panel-line);}
+
+  footer{
+    margin-top:64px;padding-top:22px;border-top:1px solid var(--panel-line);
+    color:var(--muted);font-size:12px;line-height:1.9;text-align:center;
+  }
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="brand"><b>לומדים בעצמי</b> <span class="dot">·</span> מוטי לרנר</div>
+  </div>
+
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-scrim"></div>
+    <div class="hero-inner">
+      <div class="hero-eyebrow">מעבדה דיגיטלית · כיתה ט׳</div>
+      <h1>לומדים <span class="accent">בעצמי</span></h1>
+
+      <div class="mission">
+        <span class="m1">חומרי לימוד</span>
+        <span class="m2">ודרכי הוראה</span>
+        <span class="m3">המבוססים על חקר ולימוד עצמי</span>
+        <span class="m4">באמצעות כלי בינה מלאכותית</span>
+      </div>
+
+      <div class="search-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="searchInput" placeholder="מה תרצו לחקור היום?" oninput="filterCards()">
+        <button onclick="document.getElementById('searchInput').focus()">חיפוש</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <div class="section-head">
+      <div class="section-title">הפרויקטים שלי</div>
+      <div class="result-count" id="resultCount">5 פרויקטים</div>
+    </div>
+
+    <div class="cards" id="cardsGrid">
+
+      <a class="card" href="https://fizika-yesumit-tech-9.github.io/fizika-yesumit-tech-9/" target="_blank" rel="noopener"
+         data-search="פיזיקה יישומית בשילוב טכנולוגיה מכניקה אנרגיה קפיצים אלסטיות בינה מלאכותית עבודת חקר חשמל החשמלאי הראשי">
+        <div class="card-media">
+          <img src="https://images.unsplash.com/photo-1758685734312-5134968399a8?fm=jpg&q=70&w=900&auto=format&fit=crop" alt="נוסחאות פיזיקה על לוח">
+          <div class="card-tag">אתר לימוד · כיתה ט׳</div>
+        </div>
+        <div class="card-body">
+          <div class="card-title">פיזיקה יישומית בשילוב טכנולוגיה</div>
+          <div class="card-desc">יחידות לימוד בכיתה ט׳ עם Gems מבוססי AI, משחקי תרגול אינטראקטיביים, ועבודות חקר עצמאיות — ממכניקה ועד אנרגיות מתחדשות. כולל בתוכו את סימולציית המעגלים "החשמלאי הראשי".</div>
+          <div class="card-provider">מוטי לרנר</div>
+          <div class="card-footer">
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v13.5M4 19.5A2.5 2.5 0 0 0 6.5 22H20"/></svg> 6 יחידות</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg> Gems ומשחקי תרגול</span>
+          </div>
+        </div>
+      </a>
+
+      <div class="card soon" data-search="תקשוב כיתה י">
+        <div class="card-media">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg>
+          <div class="card-tag">בקרוב</div>
+        </div>
+        <div class="card-body">
+          <div class="card-title">תקשוב — כיתה י׳</div>
+          <div class="card-desc">יחידות לימוד בתקשוב לכיתה י׳. האתר בבנייה ויתווסף בהמשך.</div>
+          <div class="card-provider">מוטי לרנר</div>
+        </div>
+      </div>
+
+      <div class="card soon" data-search="תקשוב כיתה יא">
+        <div class="card-media">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg>
+          <div class="card-tag">בקרוב</div>
+        </div>
+        <div class="card-body">
+          <div class="card-title">תקשוב — כיתה יא׳</div>
+          <div class="card-desc">יחידות לימוד בתקשוב לכיתה יא׳. האתר בבנייה ויתווסף בהמשך.</div>
+          <div class="card-provider">מוטי לרנר</div>
+        </div>
+      </div>
+
+      <div class="card soon" data-search="תקשוב כיתה יב ניהול פרויקט">
+        <div class="card-media">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg>
+          <div class="card-tag">בקרוב</div>
+        </div>
+        <div class="card-body">
+          <div class="card-title">תקשוב — כיתה יב׳ · ניהול פרויקט</div>
+          <div class="card-desc">ליווי פרויקט הגמר בתקשוב לכיתה יב׳. האתר בבנייה ויתווסף בהמשך.</div>
+          <div class="card-provider">מוטי לרנר</div>
+        </div>
+      </div>
+
+      <div class="card soon" data-search="בגרויות ליבת תקשוב">
+        <div class="card-media">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg>
+          <div class="card-tag">בקרוב</div>
+        </div>
+        <div class="card-body">
+          <div class="card-title">בגרויות — ליבת תקשוב</div>
+          <div class="card-desc">חומרי הכנה ותרגול לבחינת הבגרות בליבת התקשוב. האתר בבנייה ויתווסף בהמשך.</div>
+          <div class="card-provider">מוטי לרנר</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="no-results" id="noResults">לא נמצאו פרויקטים תואמים לחיפוש.</div>
+
+    <footer>
+      פרויקט גמר · קורס שימוש בבינה מלאכותית ופיתוח יישומי בינה מלאכותית · ד"ר ישי מור · המכללה האקדמית בית ברל<br>
+      מגיש: מוטי לרנר
+    </footer>
+
+  </div>
+
+<script>
+  function filterCards(){
+    const query = document.getElementById('searchInput').value.trim().toLowerCase();
+    const cards = document.querySelectorAll('.card');
+    let visibleCount = 0;
+    cards.forEach(card => {
+      const haystack = (card.dataset.search + ' ' + card.querySelector('.card-title').textContent).toLowerCase();
+      const match = haystack.includes(query);
+      card.classList.toggle('is-hidden', !match);
+      if(match) visibleCount++;
+    });
+    document.getElementById('resultCount').textContent = visibleCount + (visibleCount === 1 ? ' פרויקט' : ' פרויקטים');
+    document.getElementById('noResults').classList.toggle('show', visibleCount === 0);
+  }
+</script>
+</body>
+</html>
